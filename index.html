@@ -1,29 +1,166 @@
 <!doctype html>
-<html>
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EAI-ADD Demo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EAI-ADD · Demo</title>
   <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;max-width:860px;margin:40px auto;padding:0 16px;line-height:1.6}
-    header{display:flex;justify-content:space-between;align-items:center}
-    .card{border:1px solid #e5e7eb;border-radius:12px;padding:20px;margin-top:16px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
-    button{padding:10px 16px;border:1px solid #e5e7eb;border-radius:10px;background:#fff;cursor:pointer}
+    :root{
+      --bg:#0b1020;           /* 背景(深) */
+      --panel:#0f172a;        /* 面板 */
+      --muted:#94a3b8;        /* 次级文字 */
+      --text:#e2e8f0;         /* 主要文字 */
+      --brand:#60a5fa;        /* 品牌色 */
+      --accent:#22d3ee;       /* 强调 */
+      --card:#111827;         /* 卡片底色 */
+      --border:#1f2937;       /* 边框色 */
+      --radius:14px;
+      --shadow:0 10px 30px rgba(0,0,0,.25), inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;background:radial-gradient(1200px 600px at 10% -10%,rgba(96,165,250,.25),transparent 60%),
+      radial-gradient(1000px 600px at 90% 10%,rgba(34,211,238,.18),transparent 55%),
+      var(--bg);
+      color:var(--text);font:16px/1.6 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+    }
+    .container{max-width:1120px;margin:0 auto;padding:0 20px}
+    header.sticky{position:sticky;top:0;backdrop-filter:saturate(120%) blur(10px);background:rgba(15,23,42,.7);z-index:50;border-bottom:1px solid var(--border)}
+    nav{display:flex;align-items:center;gap:18px;padding:14px 0}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:700}
+    .logo-dot{width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--brand),var(--accent));box-shadow:0 0 18px rgba(96,165,250,.8)}
+    .nav-right{margin-left:auto;display:flex;gap:10px}
+    .btn{padding:10px 14px;border:1px solid var(--border);border-radius:12px;background:#0b1220;color:var(--text);cursor:pointer;text-decoration:none}
+    .btn.primary{border-color:transparent;background:linear-gradient(135deg,var(--brand),var(--accent));color:#0b1220;font-weight:700}
+
+    .hero{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;padding:52px 0}
+    .hero .panel{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid var(--border);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
+    .kicker{color:var(--muted);letter-spacing:.12em;text-transform:uppercase;font-size:12px}
+    h1{margin:.2em 0 .4em;font-size:40px;line-height:1.15}
+    .subtitle{color:#cbd5e1}
+    .hero .cta{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    .code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background:#0a0f1d;border:1px solid var(--border);border-radius:12px;padding:18px;overflow:auto}
+
+    .section{padding:18px 0 42px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.02));border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:0 0 6px}
+    .muted{color:var(--muted)}
+
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .imgbox{border:1px dashed var(--border);border-radius:12px;min-height:220px;display:grid;place-items:center;color:var(--muted)}
+
+    footer{border-top:1px solid var(--border);padding:26px 0;color:var(--muted)}
+
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr 1fr}
+      .two-col{grid-template-columns:1fr}
+      h1{font-size:32px}
+    }
+    @media (max-width: 600px){
+      .grid{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>EAI-ADD Demo</h1>
-    <nav><a href="./">Home</a></nav>
+  <header class="sticky">
+    <div class="container">
+      <nav>
+        <div class="logo"><span class="logo-dot"></span> EAI-ADD</div>
+        <a class="muted" href="#features">Features</a>
+        <a class="muted" href="#demo">Demo</a>
+        <a class="muted" href="#start">Start</a>
+        <div class="nav-right">
+          <a class="btn" href="https://github.com/RDD-ADD/EAI-ADD" target="_blank">GitHub</a>
+          <a class="btn primary" href="#demo">Live Demo</a>
+        </div>
+      </nav>
+    </div>
   </header>
 
-  <div class="card">
-    <h2>It works! 🎉</h2>
-    <p>This is the demo page hosted on <strong>GitHub Pages</strong>.</p>
-    <button onclick="document.getElementById('out').textContent='Hello from GitHub Pages 🎈'">
-      Click me
-    </button>
-    <p id="out" style="margin-top:12px;color:#374151;"></p>
-  </div>
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <div class="kicker">EAI-ADD · Demo Site</div>
+        <h1>一个简洁酷炫的演示页布局</h1>
+        <p class="subtitle">与 <em>rdd-add-1.github.io/RDD-ADD</em> 相似的结构：顶部导航、欢迎区、功能卡片、示例/截图、快速开始与页脚。</p>
+        <div class="cta">
+          <a class="btn primary" href="#start">快速开始</a>
+          <a class="btn" href="#features">查看功能</a>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="muted">一段示意代码</div>
+        <pre class="code"><code># Install
+pip install eai-add
+
+# Quick use
+from eai_add import run
+run("demo")
+
+# CLI
+# eai-add --demo input.json</code></pre>
+      </div>
+    </section>
+
+    <!-- Features cards -->
+    <section id="features" class="section">
+      <h2>功能亮点</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>轻量</h3>
+          <p class="muted">零依赖静态站点，直接托管在 GitHub Pages。</p>
+        </div>
+        <div class="card">
+          <h3>易扩展</h3>
+          <p class="muted">卡片区块可自由增删，适配你的项目模块。</p>
+        </div>
+        <div class="card">
+          <h3>自适应</h3>
+          <p class="muted">响应式布局，在手机、平板、PC 上都好看。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo / Screenshot -->
+    <section id="demo" class="section two-col">
+      <div class="card">
+        <h2>演示 / 截图</h2>
+        <div class="imgbox">在这里放一张截图或动态图（demo.gif）</div>
+        <p class="muted" style="margin-top:10px">将你的图片放到仓库根目录并在此处替换为 <code>&lt;img src="demo.gif" alt="demo" /&gt;</code>。</p>
+      </div>
+      <div class="card">
+        <h2>模块说明</h2>
+        <ul>
+          <li>数据预处理</li>
+          <li>模型推理 / 训练</li>
+          <li>可视化与导出</li>
+        </ul>
+        <p class="muted">根据你的项目替换上面的条目。</p>
+      </div>
+    </section>
+
+    <!-- Get Started -->
+    <section id="start" class="section">
+      <h2>快速开始</h2>
+      <div class="card">
+        <ol>
+          <li>把此文件保存为 <code>index.html</code> 放到仓库根目录。</li>
+          <li>在仓库 Settings → Pages：选择 <strong>Deploy from a branch</strong>，分支选 <strong>main</strong>，文件夹选 <strong>/ (root)</strong>，保存。</li>
+          <li>几分钟后访问：<code>https://RDD-ADD.github.io/EAI-ADD/</code>。</li>
+        </ol>
+        <p class="muted">如需多页面，新增 <code>about.html</code>、<code>docs.html</code> 并在导航里加链接。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© <span id="y"></span> EAI-ADD · Built with GitHub Pages</div>
+  </footer>
+
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 </body>
 </html>
