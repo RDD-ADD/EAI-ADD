@@ -78,9 +78,11 @@
   <section>
     <h2>Abstract</h2>
     <div class="abstract">
-      <p>Audio Deepfake Detection (ADD) aims to detect spoof speech from bonafide speech. Most prior studies assume that stronger correlations within or across acoustic and emotional features imply authenticity, and thus focus on enhancing or measuring such correlations. 
-However, existing methods often treat acoustic and emotional features in isolation or rely on correlation metrics, which overlook subtle desynchronization between them and smooth out abrupt discontinuities.
-To address these issues, we propose EAI-ADD, which treats cross-level emotion–acoustic inconsistency as the primary detection signal. We first project emotional and acoustic representations into a comparable space. Then we progressively integrating frame- and utterance-level emotion features with acoustic features to capture cross-level emotion–acoustic inconsistencies across different temporal granularities. Experimental results on the ASVspoof 2019LA and 2021LA datasets demonstrate that the proposed EAI-ADD outperforms state-of-the-art baselines, providing a more effective solution for audio anti-spoofing detection.</p>
+      <p>
+        Audio Deepfake Detection (ADD) aims to detect spoof speech from bonafide speech. Most prior studies assume that stronger correlations within or across acoustic and emotional features imply authenticity, and thus focus on enhancing or measuring such correlations.
+        However, existing methods often treat acoustic and emotional features in isolation or rely on correlation metrics, which overlook subtle desynchronization between them and smooth out abrupt discontinuities.
+        To address these issues, we propose EAI-ADD, which treats cross-level emotion–acoustic inconsistency as the primary detection signal. We first project emotional and acoustic representations into a comparable space. Then we progressively integrate frame- and utterance-level emotion features with acoustic features to capture cross-level emotion–acoustic inconsistencies across different temporal granularities. Experimental results on the ASVspoof 2019LA and 2021LA datasets demonstrate that the proposed EAI-ADD outperforms state-of-the-art baselines, providing a more effective solution for audio anti-spoofing detection.
+      </p>
     </div>
   </section>
 
@@ -88,23 +90,45 @@ To address these issues, we propose EAI-ADD, which treats cross-level emotion–
     <h2>Model Architecture</h2>
     <div class="figure">
       <img src="1.png" alt="Model Architecture Diagram">
-      <p><em>Figure:</em> Our overall framework is illustrated in (a). (b) illustrates the Emotion-Acoustic Alignment Module.(c) depicts Emotion-Acoustic Inconsistency Modeling Module.</p>
+      <p><em>Figure:</em> Our overall framework is illustrated in (a). (b) illustrates the Emotion-Acoustic Alignment Module. (c) depicts the Emotion-Acoustic Inconsistency Modeling Module.</p>
     </div>
   </section>
 
+  <!-- ======= Examples Section (with summary block inserted) ======= -->
   <section>
     <h2>More examples of Frame-level change magnitudes of emotion and acoustic features.</h2>
+
+    <!-- Summary/Takeaway box placed right under the title -->
+    <div class="abstract">
+      <p>
+        We compute the <strong>frame-level change magnitudes</strong> of emotion and acoustic features using the L2 distance and
+        <strong>min–max normalize</strong> them to [0, 1] for comparison on the same scale.
+      </p>
+      <ul>
+        <li>
+          <strong>Bonafide:</strong> the two curves <em>co-vary over long stretches</em>; peaks and valleys generally align with
+          <em>small and stable lag</em>, indicating synchronization between acoustic fluctuations and emotional dynamics.
+        </li>
+        <li>
+          <strong>Spoof:</strong> clear <em>desynchronization</em>; sharp bursts in the emotion curve are often <em>unmatched</em>
+          by acoustic changes (and vice versa), with larger and unstable phase offsets, single-sided dominance, or “plateau + bursts” patterns.
+        </li>
+        <li>
+          <strong>Takeaway:</strong> instead of using correlation as a proxy for authenticity (which can smooth out subtle misalignments),
+          we <strong>explicitly model emotion–acoustic mismatches</strong> as direct and discriminative cues—<em>rare in bonafide, prevalent in spoof</em>.
+        </li>
+      </ul>
+    </div>
 
     <div class="bonafide">
       <table>
         <tbody>
-  <tr><td><img class="sample" src="zx1.png" alt="Sample 1"></td></tr>
-  <tr><td><img class="sample" src="zx2.png" alt="Sample 2"></td></tr>
-  <tr><td><img class="sample" src="zx3.png" alt="Sample 3"></td></tr>
-  <tr><td><img class="sample" src="zx4.png" alt="Sample 4"></td></tr>
-  <tr><td><img class="sample" src="zx5.png" alt="Sample 5"></td></tr>
-</tbody>
-
+          <tr><td><img class="sample" src="zx1.png" alt="Sample 1"></td></tr>
+          <tr><td><img class="sample" src="zx2.png" alt="Sample 2"></td></tr>
+          <tr><td><img class="sample" src="zx3.png" alt="Sample 3"></td></tr>
+          <tr><td><img class="sample" src="zx4.png" alt="Sample 4"></td></tr>
+          <tr><td><img class="sample" src="zx5.png" alt="Sample 5"></td></tr>
+        </tbody>
       </table>
     </div>
   </section>
