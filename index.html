@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RDD-ADD: Retrieval-Based Deep Difference Modeling for Audio Deepfake Detection</title>
+  <title>Emotion and Acoustics Should Agree: Cross-Level Inconsistency Analysis for Audio Deepfake Detection</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -71,14 +71,16 @@
 </head>
 <body>
   <header>
-    <h1>Retrieval-Based Deep Difference Modeling for Audio Deepfake Detection</h1>
-    <h3>RDD-ADD</h3>
+    <h1>Emotion and Acoustics Should Agree: Cross-Level Inconsistency Analysis for Audio Deepfake Detection</h1>
+    <h3>EAI-ADD</h3>
   </header>
 
   <section>
     <h2>Abstract</h2>
     <div class="abstract">
-      <p>With the rapid advancement of ultra-realistic audio deepfakes, Audio Deepfake Detection (ADD) has raised serious attention. In recent years, retrieval-based augmentation technology has shown great potential in enhancing ADD by providing additional contextual information. However, existing methods rely on a single bonafide audio database, which limits deep difference learning. We propose Retrieval-based Deep Difference Modeling for ADD (RDD-ADD), integrating dual-database retrieval, anchor-based similarity fusion, and GRU-based contextual modeling to enhance representational power and capture fine-grained differences between bonafide and spoof audios. Experimental results show that RDD-ADD significantly outperforms baselines on multiple benchmarks.</p>
+      <p>Audio Deepfake Detection (ADD) aims to detect spoof speech from bonafide speech. Most prior studies assume that stronger correlations within or across acoustic and emotional features imply authenticity, and thus focus on enhancing or measuring such correlations. 
+However, existing methods often treat acoustic and emotional features in isolation or rely on correlation metrics, which overlook subtle desynchronization between them and smooth out abrupt discontinuities.
+To address these issues, we propose EAI-ADD, which treats cross-level emotion–acoustic inconsistency as the primary detection signal. We first project emotional and acoustic representations into a comparable space. Then we progressively integrating frame- and utterance-level emotion features with acoustic features to capture cross-level emotion–acoustic inconsistencies across different temporal granularities. Experimental results on the ASVspoof 2019LA and 2021LA datasets demonstrate that the proposed EAI-ADD outperforms state-of-the-art baselines, providing a more effective solution for audio anti-spoofing detection.</p>
     </div>
   </section>
 
@@ -86,15 +88,16 @@
     <h2>Model Architecture</h2>
     <div class="figure">
       <img src="model_architecture.png" alt="Model Architecture Diagram">
-      <p><em>Figure:</em> The RDD-ADD framework consists of three modules: dual-database retrieval, dynamic fusion, and deep difference modeling.</p>
+      <p><em>Figure:</em> Our overall framework is illustrated in (a). (b) illustrates the Emotion-Acoustic Alignment Module.(c) depicts Emotion-Acoustic Inconsistency Modeling Module.</p>
     </div>
   </section>
 
   <section>
-    <h2>Examples of Retrieved Samples</h2>
+    <h2>Frame-level change magnitudes of emotion and
+acoustic features.</h2>
 
     <div class="bonafide">
-      <h3>The test audio is a bonafide example:</h3>
+      <!-- <h3>The test audio is a bonafide example:</h3> -->
       <table>
         <thead>
           <tr><th>Top-5 Most Similar Bonafide Samples</th><th>Top-5 Most Similar Spoof Samples</th></tr>
