@@ -100,25 +100,28 @@
 
     <!-- Summary/Takeaway box placed right under the title -->
     <div class="abstract">
-      <p>
-        We compute the <strong>frame-level change magnitudes</strong> of emotion and acoustic features using the L2 distance and
-        <strong>min–max normalize</strong> them to [0, 1] for comparison on the same scale.
-      </p>
-      <ul>
-        <li>
-          <strong>Bonafide:</strong> the two curves <em>co-vary over long stretches</em>; peaks and valleys generally align with
-          <em>small and stable lag</em>, indicating synchronization between acoustic fluctuations and emotional dynamics.
-        </li>
-        <li>
-          <strong>Spoof:</strong> clear <em>desynchronization</em>; sharp bursts in the emotion curve are often <em>unmatched</em>
-          by acoustic changes (and vice versa), with larger and unstable phase offsets, single-sided dominance, or “plateau + bursts” patterns.
-        </li>
-        <li>
-          <strong>Takeaway:</strong> instead of using correlation as a proxy for authenticity (which can smooth out subtle misalignments),
-          we <strong>explicitly model emotion–acoustic mismatches</strong> as direct and discriminative cues—<em>rare in bonafide, prevalent in spoof</em>.
-        </li>
-      </ul>
-    </div>
+  <p>
+    We compute the <strong>frame-level change magnitudes</strong> of emotion and acoustic features using the L2 distance, and apply
+    <strong>min–max normalization</strong> to map them to the [0, 1] range for scale-consistent comparison.
+  </p>
+  <ul>
+    <li>
+      <strong>Bonafide:</strong> the two curves exhibit <em>long-range co-variation</em>; peaks and troughs generally align within a
+      <em>small and stable temporal lag</em>, indicating robust synchronization between acoustic fluctuations and emotional dynamics.
+    </li>
+    <li>
+      <strong>Spoof:</strong> pronounced <em>desynchronization</em>; sharp transients in the emotion curve are frequently
+      <em>unaccompanied</em> by corresponding acoustic changes (and vice versa), with larger and unstable phase offsets, single-modality
+      dominance, and patterns characterized by <em>prolonged plateau segments with intermittent burst-like excursions</em>.
+    </li>
+    <li>
+      <strong>Takeaway:</strong> rather than relying on correlation as a surrogate for authenticity—which can obscure fine-grained
+      misalignments—we <strong>explicitly model emotion–acoustic mismatches</strong> as direct and discriminative cues, which are
+      <em>rare in bonafide speech but prevalent in spoof audio</em>.
+    </li>
+  </ul>
+</div>
+
 
     <div class="bonafide">
       <table>
